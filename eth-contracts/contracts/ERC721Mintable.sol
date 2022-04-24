@@ -16,11 +16,6 @@ contract Ownable {
         emit OwnershipTransferred(address(0), _owner);
     }
 
-
-    function currentOwner() public view returns(address) {
-        return _owner;
-    }
-
     modifier onlyOwner() {
         require(msg.sender == _owner, "You are not the owner");
         _;
@@ -244,7 +239,7 @@ contract ERC721 is Pausable, ERC165 {
         //require(!to.isContract(), 'Destination address is a contract');
 
          _tokenOwner[tokenId] = to;
-        _ownedTokensCount[to] = _ownedTokensCount[to].increment();
+        _ownedTokensCount[to].increment();
 
         emit Transfer(address(0), to, tokenId);
     }
@@ -258,8 +253,8 @@ contract ERC721 is Pausable, ERC165 {
 
 
         _clearApproval(tokenId);
-        _ownedTokensCount[from] = _ownedTokensCount[from].decrement();
-        _ownedTokensCount[to] = _ownedTokensCount[to].increment();
+        _ownedTokensCount[from].decrement();
+        _ownedTokensCount[to].increment();
         _tokenOwner[tokenId] = to;
 
         emit Transfer(from, to, tokenId);
@@ -522,7 +517,7 @@ contract ERC721Mintable is ERC721Metadata {
     string private _symbol = "DRE"; 
     string private _baseTokenURI = "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/";
 
-    constructor() ERC721Metadata(_name, _symbol, _baseTokenURI) {}
+    constructor() ERC721Metadata(_name, _symbol, _baseTokenURI) public {}
 
     function mint(address to, uint256 tokenId) public onlyOwner returns(bool){
         super._mint(to, tokenId);

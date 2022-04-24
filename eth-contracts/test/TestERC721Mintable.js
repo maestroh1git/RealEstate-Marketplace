@@ -22,8 +22,8 @@ contract('TestERC721Mintable', accounts => {
         })
 
         it('should get token balance', async function () { 
-            let account1 = await contract.balanceOf.call(account_one);
-            let account2 = await contract.balanceOf.call(account_two);
+            let account1 = await this.contract.balanceOf(account_one);
+            let account2 = await this.contract.balanceOf(account_two);
             assert.equal(
                 account1,
                 2, 
