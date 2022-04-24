@@ -67,6 +67,13 @@ contract('TestERC721Mintable', accounts => {
             catch(e){
                 minted = false;
             }
+            // try {
+            //     await this.contract.mint(account_one, 5, {from: account_one});
+            //   } catch (error) {
+            //     // error.reason now populated with an REVERT reason
+            //     console.log("Reason for failure is ", error.reason);
+            //   }
+            //https://github.com/ethereum/solidity/issues/1686#issuecomment-451662288
             
             assert.equal(minted, false, "An account that's not the owner of the contract called this mint function");
             

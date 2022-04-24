@@ -516,10 +516,10 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 
 }
 
-contract ERC721Mintable is ERC721Metadata { //TODO rename contract
+contract ERC721Mintable is ERC721Metadata {
 
-    string private _name = "SafeRealEstate"; //TODO assign name
-    string private _symbol = "SRE"; //TODO assign symbol
+    string private _name = "DecentralizedRealEstate"; 
+    string private _symbol = "DRE"; 
     string private _baseTokenURI = "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/";
 
     constructor() ERC721Metadata(_name, _symbol, _baseTokenURI) {}
