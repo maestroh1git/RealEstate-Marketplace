@@ -1,0 +1,93 @@
+amaku@Davids-MacBook-Pro eth-contracts % truffle migrate --network development --reset
+
+Compiling your contracts...
+===========================
+> Everything is up to date, there is nothing to compile.
+
+
+Starting migrations...
+======================
+> Network name:    'development'
+> Network id:      1650886101816
+> Block gas limit: 30000000 (0x1c9c380)
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x28964fdf816b47e2ddd3477c96cc88623f60a27150c5a2cf847373679eba6adc
+   > Blocks: 0            Seconds: 0
+   > contract address:    0xc1CE37E935b6d073Dcc1e8C4496C1fc1f11d46ff
+   > block number:        41
+   > block timestamp:     1650893570
+   > account:             0xd9c9B067Df5C00168D77529b54B64D5989d03494
+   > balance:             999.860527693393978512
+   > gas used:            226537 (0x374e9)
+   > gas price:           2.506824196 gwei
+   > value sent:          0 ETH
+   > total cost:          0.000567888432889252 ETH
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.000567888432889252 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'ERC721Mintable'
+   --------------------------
+   > transaction hash:    0x30adce5d57bfbe9a2679d7df5e38578ecb6e577d6accffe4096fa8356bf94be4
+   > Blocks: 0            Seconds: 0
+   > contract address:    0xDC7e19058BA8F8899C522a28B9e039994188De57
+   > block number:        43
+   > block timestamp:     1650893570
+   > account:             0xd9c9B067Df5C00168D77529b54B64D5989d03494
+   > balance:             999.852589458377032929
+   > gas used:            3122878 (0x2fa6be)
+   > gas price:           2.505238331 gwei
+   > value sent:          0 ETH
+   > total cost:          0.007823553668636618 ETH
+
+
+   Deploying 'SquareVerifier'
+   --------------------------
+   > transaction hash:    0xd8513f77569d5aa26b5bdf036092e18578c667da966edbd77229a75fed211359
+   > Blocks: 0            Seconds: 0
+   > contract address:    0x8EcF7ac24BAE4D3728aED984203df21b79B2d7EF
+   > block number:        44
+   > block timestamp:     1650893570
+   > account:             0xd9c9B067Df5C00168D77529b54B64D5989d03494
+   > balance:             999.850136506065140745
+   > gas used:            979332 (0xef184)
+   > gas price:           2.504719862 gwei
+   > value sent:          0 ETH
+   > total cost:          0.002452952311892184 ETH
+
+
+   Deploying 'SolnSquareVerifier'
+   ------------------------------
+   > transaction hash:    0x767856d5c6fd74ad43f48239d6f1de25835eac46f869de4d2ebe760b82336dee
+   > Blocks: 0            Seconds: 0
+   > contract address:    0xae682207EeB1e775f3356BA7DFf6dD19979EF86e
+   > block number:        45
+   > block timestamp:     1650893570
+   > account:             0xd9c9B067Df5C00168D77529b54B64D5989d03494
+   > balance:             999.839954983063434575
+   > gas used:            4065830 (0x3e0a26)
+   > gas price:           2.504168399 gwei
+   > value sent:          0 ETH
+   > total cost:          0.01018152300170617 ETH
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.020458028982234972 ETH
+
+Summary
+=======
+> Total deployments:   4
+> Final cost:          0.021025917415124224 ETH

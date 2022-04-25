@@ -1,0 +1,167 @@
+
+Compiling your contracts...
+===========================
+> Everything is up to date, there is nothing to compile.
+WARNING: Ganache forking only supports EIP-1193-compliant providers. Legacy support for send is currently enabled, but will be removed in a future version _without_ a breaking change. To remove this warning, switch to an EIP-1193 provider. This error is probably caused by an old version of Web3's HttpProvider (or ganache < v7)
+
+
+Migrations dry-run (simulation)
+===============================
+> Network name:    'rinkeby-fork'
+> Network id:      4
+> Block gas limit: 29970705 (0x1c95111)
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > block number:        10566244
+   > block timestamp:     1650895605
+   > account:             0xcdf3EBf5b5204D75d4f3F9Dcd1627B6341E9B0de
+   > balance:             0.890863113999172045
+   > gas used:            226537 (0x374e9)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00226537 ETH
+
+   -------------------------------------
+   > Total cost:          0.00226537 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'ERC721Mintable'
+   --------------------------
+   > block number:        10566246
+   > block timestamp:     1650895621
+   > account:             0xcdf3EBf5b5204D75d4f3F9Dcd1627B6341E9B0de
+   > balance:             0.859176703999172045
+   > gas used:            3122878 (0x2fa6be)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.03122878 ETH
+
+
+   Deploying 'SquareVerifier'
+   --------------------------
+   > block number:        10566247
+   > block timestamp:     1650895624
+   > account:             0xcdf3EBf5b5204D75d4f3F9Dcd1627B6341E9B0de
+   > balance:             0.849383383999172045
+   > gas used:            979332 (0xef184)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00979332 ETH
+
+
+   Deploying 'SolnSquareVerifier'
+   ------------------------------
+   > block number:        10566248
+   > block timestamp:     1650895638
+   > account:             0xcdf3EBf5b5204D75d4f3F9Dcd1627B6341E9B0de
+   > balance:             0.808725083999172045
+   > gas used:            4065830 (0x3e0a26)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0406583 ETH
+
+   -------------------------------------
+   > Total cost:           0.0816804 ETH
+
+Summary
+=======
+> Total deployments:   4
+> Final cost:          0.08394577 ETH
+
+
+
+
+Starting migrations...
+======================
+> Network name:    'rinkeby'
+> Network id:      4
+> Block gas limit: 29970705 (0x1c95111)
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x4492d565da5e25563a9d978b8d06e6c70172f62785c6a06fc2e181295ecda012
+   > Blocks: 2            Seconds: 17
+   > contract address:    0xcd35B2211fD366E0c854B9Da86c69740856720dF
+   > block number:        10566253
+   > block timestamp:     1650895663
+   > account:             0xcdf3EBf5b5204D75d4f3F9Dcd1627B6341E9B0de
+   > balance:             0.890863113999172045
+   > gas used:            226537 (0x374e9)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00226537 ETH
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00226537 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'ERC721Mintable'
+   --------------------------
+   > transaction hash:    0xf272400ac6533dac76c4487b07161829560d6fd4c730b5383efef32f7c25b297
+   > Blocks: 1            Seconds: 9
+   > contract address:    0x726B5D8639BfE9377e3eB4cb7c5208ED7CF583e1
+   > block number:        10566255
+   > block timestamp:     1650895693
+   > account:             0xcdf3EBf5b5204D75d4f3F9Dcd1627B6341E9B0de
+   > balance:             0.859176703999172045
+   > gas used:            3122878 (0x2fa6be)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.03122878 ETH
+
+
+   Deploying 'SquareVerifier'
+   --------------------------
+   > transaction hash:    0x29e4f7a0148057b51c7bcd581967cca03ca14d7d9331339f39b44c16b0b27ba3
+   > Blocks: 1            Seconds: 5
+   > contract address:    0x2157e095474d2e0DA2B0E69308b08404AEE10e73
+   > block number:        10566256
+   > block timestamp:     1650895708
+   > account:             0xcdf3EBf5b5204D75d4f3F9Dcd1627B6341E9B0de
+   > balance:             0.849383383999172045
+   > gas used:            979332 (0xef184)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00979332 ETH
+
+
+   Deploying 'SolnSquareVerifier'
+   ------------------------------
+   > transaction hash:    0xcecdda9e65255524d1a96ac0e088a58cbfd7eb4a3c91381b155bcc76c1dec877
+   > Blocks: 1            Seconds: 9
+   > contract address:    0x2B6F57921932C6Ecdea08f72998DfC05cDe3a0B0
+   > block number:        10566257
+   > block timestamp:     1650895723
+   > account:             0xcdf3EBf5b5204D75d4f3F9Dcd1627B6341E9B0de
+   > balance:             0.808725083999172045
+   > gas used:            4065830 (0x3e0a26)
+   > gas price:           10 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0406583 ETH
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:           0.0816804 ETH
+
+Summary
+=======
+> Total deployments:   4
+> Final cost:          0.08394577 ETH
