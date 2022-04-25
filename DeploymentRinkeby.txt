@@ -1,3 +1,4 @@
+truffle migrate --network rinkeby
 
 Compiling your contracts...
 ===========================

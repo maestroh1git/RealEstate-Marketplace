@@ -1,4 +1,4 @@
-amaku@Davids-MacBook-Pro eth-contracts % truffle migrate --network development --reset
+truffle migrate --network development --reset
 
 Compiling your contracts...
 ===========================
