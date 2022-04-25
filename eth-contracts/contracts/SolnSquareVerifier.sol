@@ -1,26 +1,37 @@
 pragma solidity >=0.4.21 <0.6.0;
-//pragma experimental ABIEncoderV2;
+pragma experimental ABIEncoderV2;
 
 import "./ERC721Mintable.sol";
-//import "./SquareVerifier.sol";
+import "./SquareVerifier.sol";
 
-contract SquareVerifier {
-    function verifyTx(
-        uint[2] memory a,
-        uint[2][2] memory b,
-        uint[2] memory c,
-        uint[2] memory input
-    )
-    public returns(bool result);
+// contract SquareVerifier {
+//     function verifyTx(
+//         uint[2] memory a,
+//         uint[2][2] memory b,
+//         uint[2] memory c,
+//         uint[2] memory input
+//     )
+//     public returns(bool result);
+// }
+interface ISquareVerifier {
+    struct Proof {
+        Pairing.G1Point a;
+        Pairing.G2Point b;
+        Pairing.G1Point c;
+    }
+    function verifyTx(Proof calldata proof, uint256[2] calldata input)
+        external
+        view
+        returns (bool r);
 }
-
+//IZokratesVerifier.Proof memory proof,
 
 
 contract SolnSquareVerifier is ERC721Mintable {
-    SquareVerifier private verifier;
+    ISquareVerifier verifier;
 
     constructor(address verifierAddress) ERC721Mintable() public {
-        verifier = SquareVerifier(verifierAddress);
+        verifier = ISquareVerifier(verifierAddress);
     }
 
 
@@ -57,11 +68,11 @@ function addSolution(bytes32 _solutionId, uint256 _tokenId, address _solutionAdd
         return solutionKey;
     }
 
-  function mintIt(address to, uint256 tokenId, uint[2] memory a, uint[2][2] memory b, uint[2] memory c, uint[2] memory input) public returns(bool) {
+  function mintIt(address to, uint256 tokenId, ISquareVerifier.Proof memory proof, uint[2] memory a, uint[2][2] memory b, uint[2] memory c, uint[2] memory input) public returns(bool) {
       bytes32 solutionKey = keccak256(abi.encodePacked(a, b, c, input));
 
       require(solutionsSubmitted[solutionKey].solutionSolver == address(0), "Solution has been solved already.");
-      require(verifier.verifyTx(a, b, c, input), 'The solution is not valid');
+      require(verifier.verifyTx(proof, input), 'The solution is not valid');
 
       addSolution(solutionKey, tokenId, to);
       return mint(to, tokenId);
