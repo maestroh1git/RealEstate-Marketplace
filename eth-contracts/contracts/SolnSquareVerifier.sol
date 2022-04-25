@@ -1,39 +1,74 @@
 pragma solidity >=0.4.21 <0.6.0;
+//pragma experimental ABIEncoderV2;
 
-// TODO define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
+import "./ERC721Mintable.sol";
+//import "./SquareVerifier.sol";
 
-
-
-// TODO define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
-
-
-
-// TODO define a solutions struct that can hold an index & an address
-
-
-// TODO define an array of the above struct
-
-
-// TODO define a mapping to store unique solutions submitted
+contract SquareVerifier {
+    function verifyTx(
+        uint[2] memory a,
+        uint[2][2] memory b,
+        uint[2] memory c,
+        uint[2] memory input
+    )
+    public returns(bool result);
+}
 
 
 
-// TODO Create an event to emit when a solution is added
+contract SolnSquareVerifier is ERC721Mintable {
+    SquareVerifier private verifier;
+
+    constructor(address verifierAddress) ERC721Mintable() public {
+        verifier = SquareVerifier(verifierAddress);
+    }
 
 
+struct Solution {
+        uint256 index;
+        address solutionSolver;
+    }
 
-// TODO Create a function to add the solutions to the array and emit the event
+Solution[] public solutions;
+
+mapping(bytes32 => Solution) solutionsSubmitted;
+
+event solutionAdded(uint256 tokenID, bytes32 key, address solver);
 
 
+function addSolution(bytes32 _solutionId, uint256 _tokenId, address _solutionAddress) public returns(bool) {
+    bool addedSolution;
+        solutions.push(Solution({
+            index: _tokenId,
+            solutionSolver: _solutionAddress
+        }));
+        solutionsSubmitted[_solutionId] = Solution({
+            index: _tokenId,
+            solutionSolver: _solutionAddress
+        });
+        addedSolution = true;
+        emit solutionAdded(_tokenId, _solutionId, msg.sender);
+        return addedSolution;
+    }
+    //for Tests
 
-// TODO Create a function to mint new NFT only after the solution has been verified
-//  - make sure the solution is unique (has not been used before)
-//  - make sure you handle metadata as well as tokenSuplly
+    function getSolutionKey(uint[2] memory a, uint[2][2] memory b, uint[2] memory c, uint[2] memory input) public returns(bytes32){
+        bytes32 solutionKey = keccak256(abi.encodePacked(a, b, c, input));
+        return solutionKey;
+    }
 
-  
+  function mintIt(address to, uint256 tokenId, uint[2] memory a, uint[2][2] memory b, uint[2] memory c, uint[2] memory input) public returns(bool) {
+      bytes32 solutionKey = keccak256(abi.encodePacked(a, b, c, input));
+
+      require(solutionsSubmitted[solutionKey].solutionSolver == address(0), "Solution has been solved already.");
+      require(verifier.verifyTx(a, b, c, input), 'The solution is not valid');
+
+      addSolution(solutionKey, tokenId, to);
+      return mint(to, tokenId);
+  }
 
 
-
+}
 
 
 

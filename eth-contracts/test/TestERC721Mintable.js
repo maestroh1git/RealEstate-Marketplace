@@ -59,7 +59,27 @@ contract('TestERC721Mintable', accounts => {
             this.contract = await ERC721MintableComplete.new({from: account_two});
         })
 
-        it('should fail when minting when address is not contract owner', async function () { 
+        it('should not fail when minting if address is contract owner', async function () { 
+            let mint = true;
+            try{
+                await this.contract.mint(account_one, 5, {from: account_two});
+            }
+            catch(e){
+                mint = false
+            }
+            // try {
+            //     await this.contract.mint(account_one, 5, {from: account_one});
+            //   } catch (error) {
+            //     // error.reason now populated with an REVERT reason
+            //     console.log("Reason for failure is ", error.reason);
+            //   }
+            //https://github.com/ethereum/solidity/issues/1686#issuecomment-451662288
+            
+            assert.equal(mint, true, "An account that's not the owner of the contract called this mint function");
+            
+        })
+
+        it('should fail when minting if address is not contract owner', async function () { 
             let minted = true;
             try{
                 await this.contract.mint(account_one, 5, {from: account_one});
